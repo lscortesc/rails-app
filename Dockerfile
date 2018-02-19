@@ -1,5 +1,5 @@
 # Image Ruby
-FROM ruby:2.3.3
+FROM ruby:2.4.1
 
 # Install Essentials
 RUN apt-get update -qq \
