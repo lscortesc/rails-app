@@ -1,16 +1,7 @@
-<div class="col-md-7">
-  <%= form_with(model: article, local: true) do |form| %>
-    <% if article.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <strong><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</strong>
-        <ul>
-          <% article.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+<div class="col-md-9">
+  <%= render 'layouts/errors', obj: @article %>
 
+  <%= form_with(model: article, local: true) do |form| %>
     <div class="form-group">
       <%= form.label :title %>
       <%= form.text_field :title, id: :article_title, class: "form-control", autocomplete: "off", placeholder: "Title", autofocus: true %>
@@ -18,11 +9,12 @@
 
     <div class="form-group">
       <%= form.label :description %>
-      <%= form.text_area :description, id: :article_description, class: "form-control", placeholder: "Description" %>
+      <%= form.text_area :description, id: :article_description, class: "form-control", placeholder: "Description", rows: '10' %>
     </div>
 
     <div class="actions">
-      <%= form.submit class: "btn btn-primary" %>
+      <%= form.submit class: 'btn btn-primary' %>
+      <%= link_to 'Articles', articles_path, class: 'btn btn-info' %>
     </div>
   <% end %>
 </div>
