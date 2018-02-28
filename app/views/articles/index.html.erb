@@ -16,7 +16,9 @@
       </div>
       <div class="card-footer">
         <small class="text-muted">
-          Last updated <%= localize(article.updated_at, format: "%a %b %d, %y at %I:%M %P") %>
+          Created by <%= article.user.username %> at
+          <%= localize(article.updated_at, format: "%a %b %d, %y at %I:%M %P") %>
+          Last updated <%= time_ago_in_words(article.updated_at) %> ago
         </small>
       </div>
       <ul class="list-group list-group-flush">
