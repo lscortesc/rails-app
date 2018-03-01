@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, flash: { success: "Welcome to the blog #{@user.username}" } }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new, flash: { danger: "We can not register the user #{@user.username}" } }
+        format.html { redirect_to :new, flash: { danger: "We can not register the user #{@user.username}" } }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
