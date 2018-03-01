@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="text-secondary">
+      <strong>
+        <%= @user.username.upcase %>'s Profile
+      </strong>
+      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-info' %>
+    </h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+    <%= gravatar_for @user, { size: 100 } %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<hr>
+
+<%= render 'articles/articles', articles: @user.articles %>
