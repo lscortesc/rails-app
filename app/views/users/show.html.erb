@@ -1,15 +1,20 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="col-md-12 text-center">
     <h1 class="text-secondary">
       <strong>
-        <%= @user.username.upcase %>'s Profile
+        <%= @user.username %>'s Profile
       </strong>
       <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-info' %>
     </h1>
+    <%= gravatar_for @user, { size: 120 } %>
+  </div>
+</div>
 
-    <%= gravatar_for @user, { size: 100 } %>
+<div class="row">
+  <div class="col-md-12">
+    <p class="text-center text-info small font-weight-bold">
+      [ <%= pluralize(@user.articles.count, 'article') %> ]
+    </p>
   </div>
 </div>
 

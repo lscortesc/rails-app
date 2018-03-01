@@ -3,7 +3,16 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">
-      <strong><%= @article.title %></strong>
+      <div class="row">
+        <div class="col-md-2 text-center">
+          <%= gravatar_for @article.user, { size: 100 } %>
+          <%= link_to @article.user.username, user_path(@article.user) %>
+        </div>
+        <div class="col-md-10">
+          <strong><%= @article.title %></strong>
+        </div>
+      </div>
+
     </h5>
   </div>
   <ul class="list-group list-group-flush">
@@ -11,10 +20,14 @@
       <%= simple_format @article.description, class: 'text-justify' %>
     </li>
     <li class="list-group-item">
-      <%= link_to 'Articles', articles_path, class: 'btn btn-success' %>
-      <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
-      <%= link_to 'Destroy', @article, class: 'btn btn-danger',
+      <%= link_to 'Articles', articles_path, class: 'btn btn-success btn-xs' %>
+      <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary btn-xs' %>
+      <%= link_to 'Destroy', @article, class: 'btn btn-danger btn-xs',
                       method: :delete, data: { confirm: 'Are you sure?' } %>
+      <small class="text-muted">
+        Last updated <%= time_ago_in_words(@article.updated_at) %> ago
+        by <%= link_to "@#{@article.user.username}", user_path(@article.user) %>
+      </small>
     </li>
   </ul>
 </div>

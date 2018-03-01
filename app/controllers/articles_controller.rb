@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    @article.user = User.first
 
     respond_to do |format|
       if @article.save
@@ -40,6 +41,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @article.user = User.first
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, flash: { success: 'Article was successfully updated.' } }

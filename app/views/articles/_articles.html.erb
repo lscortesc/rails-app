@@ -9,17 +9,17 @@
       </div>
       <div class="card-footer">
         <small class="text-muted">
-          Created by <%= article.user.username %> at
+          Created by <%= article.user.username %> on
           <%= localize(article.updated_at, format: "%a %b %d, %y at %I:%M %P") %>
           Last updated <%= time_ago_in_words(article.updated_at) %> ago
         </small>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-center">
-          <div class="btn-group btn-group-sm justify-content" role="group" aria-label="Small button group">
-            <%= link_to 'Show', article, class: 'btn btn-success btn-sm' %>
-            <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary btn-sm' %>
-            <%= link_to 'Delete', article, class: 'btn btn-danger btn-sm',
+          <div class="btn-group btn-group-xs justify-content" role="group" aria-label="Small button group">
+            <%= link_to 'Show', article, class: 'btn btn-success' %>
+            <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', article, class: 'btn btn-danger',
                         method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         </li>
