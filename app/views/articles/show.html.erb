@@ -2,18 +2,15 @@
 
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">
-      <div class="row">
-        <div class="col-md-2 text-center">
-          <%= gravatar_for @article.user, { size: 100 } %>
-          <%= link_to @article.user.username, user_path(@article.user) %>
-        </div>
-        <div class="col-md-10">
-          <strong><%= @article.title %></strong>
-        </div>
+    <div class="row">
+      <div class="col-md-2 text-center">
+        <%= gravatar_for @article.user, { size: 120 } %>
+        <%= link_to @article.user.username, user_path(@article.user) %>
       </div>
-
-    </h5>
+      <div class="col-md-10">
+        <h5 class="card-title"><%= @article.title %></h5>
+      </div>
+    </div>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
