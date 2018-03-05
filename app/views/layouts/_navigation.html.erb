@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExample03">
+  <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Articles</a>
@@ -14,9 +14,11 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-md-0">
-      <input class="form-control" type="text" placeholder="Search">
-    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to 'Logout', logout_path, class: 'nav-link', method: 'delete' %>
+      </li>
+    </ul>
   </div>
 </nav>
 <br>
