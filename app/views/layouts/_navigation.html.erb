@@ -5,19 +5,31 @@
   </button>
 
   <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Articles</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown03">
-          <%= link_to "New", new_article_path, class: "dropdown-item" %>
-          <%= link_to "List", articles_path, class: "dropdown-item" %>
-        </div>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <%= link_to 'Logout', logout_path, class: 'nav-link', method: 'delete' %>
+        <%= link_to 'Articles', articles_path, class: 'nav-link' %>
       </li>
+      <li class="nav-item">
+        <%= link_to 'Users', users_path, class: 'nav-link' %>
+      </li>
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <%= link_to 'Edit Profile', edit_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to 'Show Profile', user_path(current_user), class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Logout', logout_path, class: 'dropdown-item', method: :delete %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Login', login_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Up', signup_path, class: 'nav-link' %>
+        </li>
+        <% end %>
     </ul>
   </div>
 </nav>

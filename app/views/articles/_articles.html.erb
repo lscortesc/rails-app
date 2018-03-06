@@ -18,9 +18,11 @@
         <li class="list-group-item text-center">
           <div class="btn-group btn-group-xs justify-content" role="group" aria-label="Small button group">
             <%= link_to 'Show', article, class: 'btn btn-success' %>
-            <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary' %>
-            <%= link_to 'Delete', article, class: 'btn btn-danger',
-                        method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if logged_in? && current_user == article.user %>
+              <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-primary' %>
+              <%= link_to 'Delete', article, class: 'btn btn-danger',
+                          method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         </li>
       </ul>
