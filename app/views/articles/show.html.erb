@@ -18,7 +18,7 @@
     </li>
     <li class="list-group-item">
       <%= link_to 'Articles', articles_path, class: 'btn btn-success btn-xs' %>
-      <% if logged_in? && current_user == @article.user %>
+      <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
         <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary btn-xs' %>
         <%= link_to 'Destroy', @article, class: 'btn btn-danger btn-xs',
                       method: :delete, data: { confirm: 'Are you sure?' } %>

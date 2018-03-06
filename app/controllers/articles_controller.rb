@@ -43,7 +43,6 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    @article.user = current_user
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, flash: { success: 'Article was successfully updated.' } }
@@ -77,7 +76,7 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user && !current_user.admin?
         respond_to do |format|
           format.html { redirect_to articles_path, flash: { danger: 'You only can edit and destroy your own articles.' } }
           format.json { head :no_content, status: :unprocessable_entity }
