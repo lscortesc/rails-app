@@ -1,1 +1,24 @@
 @import "bootstrap";
+
+$btn-padding-x-xs:  .40rem !default;
+$btn-padding-y-xs:  .20rem !default;
+$input-btn-line-height-xs: 1.2 !default;
+
+.btn.btn-xs {
+  // line-height: ensure proper height of button next to small input
+  @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $font-size-sm, $input-btn-line-height-xs, $btn-border-radius-sm);
+}
+
+.btn-group-xs > .btn { @extend .btn-xs; }
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(sm) {
+    column-count: 2;
+  }
+}

@@ -1,0 +1,27 @@
+<%= render 'layouts/messages' %>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="text-secondary">
+      <strong>
+        <%= @user.username %>'s Profile
+      </strong>
+      <% if logged_in? && current_user === @user %>
+        <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-info' %>
+      <% end %>
+    </h1>
+    <%= gravatar_for @user, { size: 120, class: 'rounded-circle' } %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="text-center text-info small">
+      [ <%= pluralize(@user.articles.count, 'article') %> ]
+    </p>
+  </div>
+</div>
+
+<hr>
+
+<%= render 'articles/articles', articles: @user_articles %>
