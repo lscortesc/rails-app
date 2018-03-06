@@ -1,0 +1,24 @@
+<%= render 'layouts/messages' %>
+
+<h2>Bloggers</h2>
+
+<%= render 'layouts/pagination', obj: @users %>
+
+<div class="card-columns">
+  <% @users.each do |user| %>
+    <div class="card">
+      <%= link_to gravatar_for(user, { size: 200, class: 'card-img-top' }), user_path(user) %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to "@#{user.username}", user_path(user) %>
+        </h5>
+        <p class="card-text">
+          <strong><%= user.username %></strong> has written <%= pluralize(user.articles.count, 'article') %>
+        </p>
+        <p class="card-text"><small class="text-muted">User since <%= time_ago_in_words(user.created_at) %> ago</small></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'layouts/pagination', obj: @users %>

@@ -1,0 +1,20 @@
+<%= render 'layouts/messages' %>
+
+<%= form_with(controller: session, local: true, class: 'form-signin') do |form| %>
+  <div class="text-center mb-4">
+    <img class="mb-4 rounded-circle" src="https://avatars3.githubusercontent.com/u/32585393?s=200&v=4">
+    <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.text_field :username, id: :username, class: "form-control", autocomplete: "off", placeholder: "Username", autofocus: true, required: true %>
+    <%= form.label :username %>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.password_field :password, id: :password, class: "form-control", placeholder: "Password", required: true %>
+    <%= form.label :password %>
+  </div>
+
+  <%= form.submit 'Sign in', class: 'btn btn-lg btn-primary btn-block' %>
+<% end %>
