@@ -28,6 +28,16 @@
       </ul>
     </div>
   <% end %>
+
+  <% if logged_in? %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text font-weight-bold">
+          <%= link_to 'Add a new article', new_article_path %>
+        </p>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <%= render 'layouts/pagination', obj: articles %>

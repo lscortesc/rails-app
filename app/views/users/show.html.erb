@@ -6,7 +6,9 @@
       <strong>
         <%= @user.username %>'s Profile
       </strong>
-      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-info' %>
+      <% if logged_in? && current_user === @user %>
+        <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-info' %>
+      <% end %>
     </h1>
     <%= gravatar_for @user, { size: 120, class: 'rounded-circle' } %>
   </div>
@@ -16,7 +18,6 @@
   <div class="col-md-12">
     <p class="text-center text-info small">
       [ <%= pluralize(@user.articles.count, 'article') %> ]
-      <%= link_to 'New', new_article_path, class: 'btn btn-success btn-xs' %>
     </p>
   </div>
 </div>

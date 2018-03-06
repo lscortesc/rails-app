@@ -12,9 +12,6 @@ $input-btn-line-height-xs: 1.2 !default;
 .btn-group-xs > .btn { @extend .btn-xs; }
 
 .card-columns {
-  @include media-breakpoint-only(xl) {
-    column-count: 5;
-  }
   @include media-breakpoint-only(lg) {
     column-count: 4;
   }

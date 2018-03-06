@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, flash: { success: "Welcome to the blog #{@user.username}" } }
         format.json { render :show, status: :created, location: @user }
       else
@@ -71,5 +73,14 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :email, :password)
+    end
+
+    def require_same_user
+      if current_user != @user
+        respond_to do |format|
+          format.html { redirect_to users_path, flash: { danger: 'You only can edit your own account.' } }
+          format.json { head :no_content, status: :unprocessable_entity }
+        end
+      end
     end
 end
