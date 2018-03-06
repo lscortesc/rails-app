@@ -9,7 +9,7 @@
       </div>
       <div class="card-footer">
         <small class="text-muted">
-          Created by <%= article.user.username %> on
+          Created by <%= article.user.username if article.user %> on
           <%= localize(article.updated_at, format: "%a %b %d, %y at %I:%M %P") %>
           Last updated <%= time_ago_in_words(article.updated_at) %> ago
         </small>
