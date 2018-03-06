@@ -77,9 +77,9 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @user && !current_user.admin?
+      if !logged_in? || (current_user != @user && !current_user.admin?)
         respond_to do |format|
-          format.html { redirect_to users_path, flash: { danger: 'You only can edit your own account.' } }
+          format.html { redirect_to users_path, flash: { danger: 'You can not edit this user.' } }
           format.json { head :no_content, status: :unprocessable_entity }
         end
       end
