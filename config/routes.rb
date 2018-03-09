@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   # Home
   root 'home#index'
+
+  # Categories
+  resources :categories, except: [:destroy]
 end
